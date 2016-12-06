@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08DD11041DF71A72006D5249 /* DetalleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DD11031DF71A72006D5249 /* DetalleViewController.swift */; };
 		503FC2211DF5D7EE0068CA14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503FC2201DF5D7EE0068CA14 /* AppDelegate.swift */; };
 		503FC2231DF5D7EF0068CA14 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503FC2221DF5D7EF0068CA14 /* ViewController.swift */; };
 		503FC2261DF5D7EF0068CA14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 503FC2241DF5D7EF0068CA14 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		08DD11031DF71A72006D5249 /* DetalleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalleViewController.swift; sourceTree = "<group>"; };
 		503FC21D1DF5D7EE0068CA14 /* AppDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		503FC2201DF5D7EE0068CA14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		503FC2221DF5D7EF0068CA14 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				503FC2291DF5D7EF0068CA14 /* LaunchScreen.storyboard */,
 				503FC22C1DF5D7EF0068CA14 /* Info.plist */,
 				503FC2321DF5F7100068CA14 /* FilaTableViewCell.swift */,
+				08DD11031DF71A72006D5249 /* DetalleViewController.swift */,
 			);
 			path = AppDemo;
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08DD11041DF71A72006D5249 /* DetalleViewController.swift in Sources */,
 				503FC2231DF5D7EF0068CA14 /* ViewController.swift in Sources */,
 				503FC2211DF5D7EE0068CA14 /* AppDelegate.swift in Sources */,
 				503FC2331DF5F7100068CA14 /* FilaTableViewCell.swift in Sources */,
@@ -301,6 +305,7 @@
 				503FC2311DF5D7EF0068CA14 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

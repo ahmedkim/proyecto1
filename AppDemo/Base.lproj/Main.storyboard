@@ -59,7 +59,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qPC-BP-OQ8" id="PhK-Pt-rdB">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ki3-i5-Ftt">
@@ -91,7 +91,7 @@
                                         <rect key="frame" x="0.0" y="72" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nIA-Jy-dkN" id="bxb-3H-ZyI">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54N-Us-39J">
@@ -125,7 +125,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.35523027278651509" green="0.80741217007990873" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="5FH-Y1-pqN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="8gY-AV-QyG"/>
                             <constraint firstItem="5FH-Y1-pqN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="HFg-Fg-1Oe"/>
@@ -134,16 +134,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1TD-6y-Yls"/>
+                    <connections>
+                        <segue destination="s6z-3P-pIq" kind="show" identifier="Detalle Segue" id="kE3-Oj-T9R"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="204.375" y="2.112676056338028"/>
         </scene>
-        <!--View Controller-->
+        <!--Detalle View Controller-->
         <scene sceneID="tHA-h7-BHp">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yzB-Ud-lBs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="s6z-3P-pIq" sceneMemberID="viewController">
+                <viewController id="s6z-3P-pIq" customClass="DetalleViewController" customModule="AppDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZfD-eW-LUM"/>
                         <viewControllerLayoutGuide type="bottom" id="Z4M-g2-c8e"/>
@@ -151,11 +153,27 @@
                     <view key="view" contentMode="scaleToFill" id="ryn-Uv-rCg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yiw-eM-S2G">
+                                <rect key="frame" x="139" y="273.5" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="0.35202377134158713" green="0.85194815439055493" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Yiw-eM-S2G" firstAttribute="centerY" secondItem="ryn-Uv-rCg" secondAttribute="centerY" id="O1L-IM-qIO"/>
+                            <constraint firstItem="Yiw-eM-S2G" firstAttribute="centerX" secondItem="ryn-Uv-rCg" secondAttribute="centerX" id="yh5-25-FTa"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="lblNombre" destination="Yiw-eM-S2G" id="iyK-Vg-TPU"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yzB-Ud-lBs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1080" y="1"/>
+            <point key="canvasLocation" x="1104" y="2"/>
         </scene>
     </scenes>
 </document>
