@@ -7,13 +7,35 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DetalleViewControllerDelegate, AgregarViewControllerDelegate {
-    var datos = [("Enrique", 31), ("Bulmaro", 28)]
+    var datos = [("Enrique", 31), ("Bulmaro", 28), ("Pedro", 18), ("Laura", 25), ("Lupita", 41), ("Sergio", 28), ("Sonia", 45), ("Luis", 28),
+    ("Maria", 41), ("Sophie", 28), ("Ivan", 45), ("David", 28)]
     var filaseleccionada = -1
     var esEdicion = false
     @IBOutlet weak var tblTablas: UITableView!
     
+    @IBOutlet weak var imgFoto: UIImageView!
+    @IBOutlet weak var lblNombre: UILabel!
+    
+    @IBAction func btnRefresh(_ sender: Any) {
+        let idFacebook = FBSDKAccessToken.current().userID
+        let cadenaUrl = "http://graph.facebook.com/\(idFacebook!)/picture?type=large"
+        //let url = URL(string: "http://graph.facebook.com/\(idFacebook!)/picture?type=large")
+        //let dato : Data?
+        
+        imgFoto.loadPicture(url: cadenaUrl)
+        
+        /*do{
+            dato = try Data(contentsOf: url!)
+            imgFoto.image = UIImage(data: dato!)
+        } catch {
+            print("Error cargando la imagen.! \(error.localizedDescription)")
+            dato = nil
+            imgFoto.image = UIImage(named: "Mr._Mime")
+        }*/
+    }
     
     @IBAction func btnAgregar_Click(_ sender: Any) {
         performSegue(withIdentifier: "Agregar Segue", sender: self)
@@ -23,6 +45,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         print("Vista cargada")
+        imgFoto.image = UIImage(named: "Mr._Mime")
+        lblNombre.text = "Mr. Mime"
     }
 
     override func didReceiveMemoryWarning() {
@@ -112,8 +136,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let proto = (indexPath.row % 2 == 0) ? "proto2" : "proto1"
-        let vista = tableView.dequeueReusableCell(withIdentifier: proto, for: indexPath) as! FilaTableViewCell
+        //let proto = (indexPath.row % 2 == 0) ? "proto2" : "proto1"
+        let vista = tableView.dequeueReusableCell(withIdentifier: "proto1", for: indexPath) as! FilaTableViewCell
         
         vista.lblIzquierda.text = "\(datos[indexPath.row].1)"
         vista.lblDerecha.text = datos[indexPath.row].0
@@ -126,6 +150,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 //            vista.lblIzquierda.text = "\(datos[indexPath.row].1)"
 //            vista.lblDerecha.text = datos[indexPath.row].0
 //        }
+        
+        let idFacebook = FBSDKAccessToken.current().userID
+        let cadenaUrl = "http://graph.facebook.com/\(idFacebook!)/picture?type=large"
+        //let url = URL(string: "http://graph.facebook.com/\(idFacebook!)/picture?type=large")
+        //let dato : Data?
+        
+        vista.imgFoto.loadPicture(url: cadenaUrl)
+        
+        /*do{
+            dato = try Data(contentsOf: url!)
+            vista.imgFoto.image = UIImage(data: dato!)
+        } catch {
+            print("Error cargando la imagen.! \(error.localizedDescription)")
+            dato = nil
+            vista.imgFoto.image = UIImage(named: "Mr._Mime")
+        }*/
         
         
         
