@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		086590611DF8849100BAE32C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086590601DF8849100BAE32C /* LoginViewController.swift */; };
+		0865A2CE1DFB07930096E21D /* DataTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0865A2CC1DFB07930096E21D /* DataTest.xcdatamodeld */; };
+		0865A2D11DFB08650096E21D /* Persona.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0865A2D01DFB08650096E21D /* Persona.swift */; };
 		08A8E19D1DF8B6B10055D72C /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A8E19C1DF8B6B10055D72C /* UIImageViewExtension.swift */; };
 		08AF74E01DF9EA2F00723CBE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 08AF74DF1DF9EA2F00723CBE /* GoogleService-Info.plist */; };
 		08DD11041DF71A72006D5249 /* DetalleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DD11031DF71A72006D5249 /* DetalleViewController.swift */; };
@@ -24,6 +26,8 @@
 /* Begin PBXFileReference section */
 		086590601DF8849100BAE32C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		086590631DF8AB8300BAE32C /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = ../MyPlayground.playground; sourceTree = "<group>"; };
+		0865A2CD1DFB07930096E21D /* DataTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataTest.xcdatamodel; sourceTree = "<group>"; };
+		0865A2D01DFB08650096E21D /* Persona.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persona.swift; sourceTree = "<group>"; };
 		08A8E19C1DF8B6B10055D72C /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		08AF74DF1DF9EA2F00723CBE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		08DD11031DF71A72006D5249 /* DetalleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalleViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0865A2CF1DFB084D0096E21D /* model */ = {
+			isa = PBXGroup;
+			children = (
+				0865A2D01DFB08650096E21D /* Persona.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
 		0D94F2B97B4AEA6C09CE501B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +103,7 @@
 		503FC21F1DF5D7EE0068CA14 /* AppDemo */ = {
 			isa = PBXGroup;
 			children = (
+				0865A2CF1DFB084D0096E21D /* model */,
 				086590631DF8AB8300BAE32C /* MyPlayground.playground */,
 				503FC2201DF5D7EE0068CA14 /* AppDelegate.swift */,
 				503FC2221DF5D7EF0068CA14 /* ViewController.swift */,
@@ -104,6 +117,7 @@
 				08DD11051DF739CD006D5249 /* AgregarViewController.swift */,
 				086590601DF8849100BAE32C /* LoginViewController.swift */,
 				08A8E19C1DF8B6B10055D72C /* UIImageViewExtension.swift */,
+				0865A2CC1DFB07930096E21D /* DataTest.xcdatamodeld */,
 			);
 			path = AppDemo;
 			sourceTree = "<group>";
@@ -235,10 +249,12 @@
 				086590611DF8849100BAE32C /* LoginViewController.swift in Sources */,
 				08A8E19D1DF8B6B10055D72C /* UIImageViewExtension.swift in Sources */,
 				08DD11041DF71A72006D5249 /* DetalleViewController.swift in Sources */,
+				0865A2D11DFB08650096E21D /* Persona.swift in Sources */,
 				503FC2231DF5D7EF0068CA14 /* ViewController.swift in Sources */,
 				503FC2211DF5D7EE0068CA14 /* AppDelegate.swift in Sources */,
 				503FC2331DF5F7100068CA14 /* FilaTableViewCell.swift in Sources */,
 				08DD11061DF739CD006D5249 /* AgregarViewController.swift in Sources */,
+				0865A2CE1DFB07930096E21D /* DataTest.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +421,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0865A2CC1DFB07930096E21D /* DataTest.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0865A2CD1DFB07930096E21D /* DataTest.xcdatamodel */,
+			);
+			currentVersion = 0865A2CD1DFB07930096E21D /* DataTest.xcdatamodel */;
+			path = DataTest.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 503FC2151DF5D7EE0068CA14 /* Project object */;
 }

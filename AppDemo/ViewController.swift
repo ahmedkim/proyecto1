@@ -19,7 +19,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var esEdicion = false
     @IBOutlet weak var tblTablas: UITableView!
     
-    var arreglo : [(nombre: String, edad: Int, genero: String, foto: String)] = []
+//    var arreglo : [(nombre: String, edad: Int, genero: String, foto: String)] = []
+    var arreglo : [Persona] = [Persona]()
     
     @IBOutlet weak var imgFoto: UIImageView!
     @IBOutlet weak var lblNombre: UILabel!
@@ -43,6 +44,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         let valor = Int(lblNombre.text!)!
         rootRef?.child("Base").setValue(valor + 1)
+        
+        sincronizar()
     }
     
     @IBAction func btnAgregar_Click(_ sender: Any) {
@@ -57,7 +60,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         lblNombre.text = "Mr. Mime"
         rootRef = FIRDatabase.database().reference()
     
-        sincronizar()
+        arreglo = Persona.selectTodos()
+        tblTablas.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -75,7 +79,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     //MARK: DetalleView Delegates
     func numeroCambiado(numero: Int) {
         print("Numero cambiado: \(numero)")
-        arreglo[numero].1 = arreglo[numero].1 + 1
+        arreglo[numero].edad = arreglo[numero].edad + 1
         tblTablas.reloadData()
     }
     
@@ -86,8 +90,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let view = segue.destination as! DetalleViewController
             
             view.numerofila = filaseleccionada
-            view.dato = arreglo[filaseleccionada].0
-            view.datoNumero = arreglo[filaseleccionada].1
+            view.dato = arreglo[filaseleccionada].nombre!
+            view.datoNumero = Int(arreglo[filaseleccionada].edad)
             
             view.delegado = self
             break
@@ -97,8 +101,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             if (esEdicion)
             {
                 view.Fila = filaseleccionada
-                view.Nombre = arreglo[filaseleccionada].0
-                view.Edad = arreglo[filaseleccionada].1
+                view.Nombre = arreglo[filaseleccionada].nombre!
+                view.Edad = Int(arreglo[filaseleccionada].edad)
                 esEdicion = false
             }
             
@@ -138,8 +142,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func BorrarFila(sender: UITableViewRowAction, indexPath: IndexPath)
     {
-        datos.remove(at: indexPath.row)
-        tblTablas.reloadData()
+        //datos.remove(at: indexPath.row)
+        //tblTablas.reloadData()
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        context.delete(self.arreglo[indexPath.row])
+        self.arreglo.remove(at: indexPath.row)
+        self.tblTablas.deleteRows(at: [indexPath], with: .fade)
+        
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
     }
     
     func editarFila(sender: UITableViewRowAction, indexPath: IndexPath)
@@ -159,8 +170,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         let dato = arreglo[indexPath.row]
         
+        dato.edad = Int16(indexPath.row)
+        
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        
         vista.lblIzquierda.text = "\(dato.edad)"
-        vista.lblDerecha.text = "\(dato.nombre)"
+        vista.lblDerecha.text = "\(dato.nombre!)"
         
         if dato.genero == "m"{
             vista.imgFoto.image = UIImage(named: "user_male")
@@ -182,7 +197,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         //let url = URL(string: "http://graph.facebook.com/\(idFacebook!)/picture?type=large")
         //let dato : Data?
         
-        vista.imgFoto.downloadData(url: arreglo[indexPath.row].foto)
+        vista.imgFoto.downloadData(url: arreglo[indexPath.row].foto!)
         
         /*do{
             dato = try Data(contentsOf: url!)
@@ -207,7 +222,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func sincronizar()
     {
-        let url = URL(string: "http://kke.mx/demo/contactos.php")
+        let url = URL(string: "http://kke.mx/demo/contactos2.php")
         
         var request = URLRequest(url: url!, cachePolicy: URLRequest.CachePolicy.returnCacheDataElseLoad, timeoutInterval: 1000)
         
@@ -254,14 +269,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             self.arreglo.removeAll()
             
-            for d in datos{
-                let nombre = (d["nombre"] as! String)
-                let edad = (d["edad"] as! Int)
-                let foto = d["foto"] as! String
-                let genero = d["genero"] as! String
-                
-                self.arreglo.append((nombre: nombre, edad: edad, genero: genero, foto: foto))
-            }
+//            for d in datos{
+//                let nombre = (d["nombre"] as! String)
+//                let edad = (d["edad"] as! Int)
+//                let foto = d["foto"] as! String
+//                let genero = d["genero"] as! String
+//                
+//                self.arreglo.append((nombre: nombre, edad: edad, genero: genero, foto: foto))
+//            }
+            
+            let (agregados, modificados, errores) = Persona.agregarTodos(datos: datos)
+            
+            print("Se agregaron \(agregados) registros")
+            print("Se modificaron \(modificados) registros")
+            print("Errores \(errores) registros")
+            
+            self.arreglo = Persona.selectTodos()
+            
+            print("Se leyeron \(self.arreglo.count) registros")
             
             self.tblTablas.reloadData()
         })
